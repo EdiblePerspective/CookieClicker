@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./app.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="main">
+    <div id="startInfo">
+        <form>
+            <label for="charName">Character Name</label>
+            <input name="charName" id="name"/>
+            <label for="charRace">Character Race</label>
+            <select name="charRace" id="race">
+                <option value="Human">Human</option>
+                <option value="Dwarf">Dwarf</option>
+                <option value="Gnome">Gnome</option>
+                <option value="Half-Orc" >Half-Orc</option>
+                <option value="Halfling" >Halfling</option>
+                <option value="Elf" >Elf</option>
+                <option value="Axolotl">Axolotl</option>
+            </select>
+            <button type="submit" id="submitInfo">Submit</button>
+        </form>
+    </div>
+    <div id="gameScreen">
+        <div id="inventory"><p>Shop</p></div>
+        <div id="portrait"><p>Portrait</p></div>
+        <div id="gameplay"><p>Main Gameplay Clicker</p></div>
+        <div id="stats"><p>Stats/Attributes</p></div>
+    </div>
+</div>
+</body>
+</html>
