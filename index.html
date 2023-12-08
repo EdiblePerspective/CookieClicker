@@ -9,6 +9,11 @@
 </head>
 <body>
 <div id="main">
+    <dialog id="primer" >
+        <p id="primerText">It has been years since you set forth from Athkatla. The city threw you a parade upon your departure; a celebration of their heroes and the glorious victory that was sure to await them. You recall being uninterested in the fanfare, eager to set off to claim glory. The memory feels bitter now. Once, you had companions; a party of hardened adventurers, each ready to risk everything to slay the evil beast that is your target. Now only you remain. Alone, you press forward; perhaps out of a misguided sense of pride, perhaps a desire for vengeance, or perhaps just because it's been too long for you to know any other way to live. You are catapulted from your ruminations by an earth-shaking roar, a monstrously-massive shape plummets from the cavern-roof to land infront of you. Before you stands your mortal enemy, the murderer of your friends - the great-wyrm Firkagg! </p>
+        <button class="primeButt" id="battle" autofocus><strong> Onwards to Battle!</strong></button>
+        <button class="primeButt"><a href="https://c.tenor.com/kWZQNdLkRp0AAAAC/tenor.gif"><strong>Flee for your life!</strong></a></button>
+    </dialog>
     <div id="startInfo">
         <form>
             <label for="charName">Character Name</label>
@@ -21,17 +26,26 @@
                 <option value="Half-Orc" >Half-Orc</option>
                 <option value="Halfling" >Halfling</option>
                 <option value="Elf" >Elf</option>
+                <option value="Half-Elf">Half-Elf</option>
                 <option value="Axolotl">Axolotl</option>
             </select>
             <button type="submit" id="submitInfo">Submit</button>
         </form>
     </div>
     <div id="gameScreen">
-        <div id="inventory"><p>Shop</p></div>
-        <div id="portrait"><p>Portrait</p></div>
-        <div id="gameplay"><p>Main Gameplay Clicker</p></div>
-        <div id="stats"><p>Stats/Attributes</p></div>
+        <div id="gameplay">
+            <h1 class="textCol">Slay the Dragon!</h1>
+            <button id="buttDrag"><img id="dragon" src="./miscMedia/dragon-37(1).png"></button>
+        </div>
+        <div id="portrait"></div>
+        <div id="shop" class="textCol"><h1 class="textMarg">Shop</h1></div>
+        <div id="stats" class="textCol">
+            <h1 class="textMarg">Stats/Attributes</h1>
+            <p class="textMarg">Current XP: <span id="countXP"></span></p>
+            <p class="textMarg" id="namePlate" ></p>
+            <p class="textMarg" id="racePlate" ></p>
+        </div>
     </div>
-</div>
+</div> 
 </body>
 </html>
