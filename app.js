@@ -46,29 +46,46 @@ document.getElementById("submitInfo").onclick = function () { //select HTML elem
     }
 };
 // no need to get rid of race/name values as when browser is opened start-screen prompts user for new name a race ==> overwriting previous values
-localStorage.removeItem("XP"); 
-const countXP=document.getElementById("countXP")
+function reset(){localStorage.removeItem("XP");} // Dev Tool only
+const countXP=document.getElementById("countXP");
 let XP = 0; 
-//setInterval(function () {
-//    XP = XP + 1;
-//    console.log("+1XP", XP);
-//}, 1000);
-
 const dragon= document.getElementById('buttDrag');
-
 function addXP(){
     XP = XP + 1;
     console.log("+1XP", XP);
-    localStorage.setItem("XP",XP);
+    countXP.textContent=XP;
+    localStorage.setItem("XP",JSON.stringify(XP)); //store XP as string
+}
+dragon.addEventListener('click',addXP);
+function getXP(){
+    const localXP = JSON.parse(localStorage.getItem("XP")); //retrieve XP as integer
+    XP=localXP;
     countXP.textContent=XP;
 }
-dragon.addEventListener('click',addXP)
-
-function getXP(){
-const localXP = localStorage.getItem("XP");
-XP=localXP;
-countXP.textContent=XP
+getXP();
+const swordSound=document.getElementById('swordSound')
+function playSwordSound(){
+    if (swordSound.currentTime!=0){
+        swordSound.currentTime=0
+    };
+    swordSound.play();
 }
+//setInterval(function () {
+  //  XP = XP + 1;
+    //console.log("+1XP", XP);}, 1000);
+
+
+
+////////////////ideas/////////////////////////////////////
+//xp bar, nested grid, width gradually fill reflect % to next lvl
+
+//enemy health bar, multiple enemies/tiers of enemy
+
+// damage based on attributes, store attributes in array
+
+// popup multi choice events at certain lvls, dialog boxes, ifelse statements
+
+//animate upgrade button text to flash whenever player has sufficient xp to purchase particular upgrade
 
 
 
@@ -77,13 +94,137 @@ countXP.textContent=XP
 
 
 
-//xp bar, nested grid, width gradually fill
 
-//code damage based on attributes
 
-// mini adventure using dialogue boxes
-//style dialog boxes
-//
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//made u look
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

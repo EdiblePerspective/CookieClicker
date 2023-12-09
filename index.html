@@ -35,13 +35,24 @@
     <div id="gameScreen">
         <div id="gameplay">
             <h1 class="textCol">Slay the Dragon!</h1>
-            <button id="buttDrag"><img id="dragon" src="./miscMedia/dragon-37(1).png"></button>
+            <button id="buttDrag" onclick="playSwordSound()" class="dragonButtAnimate dragonClickAnimate"><audio id="swordSound" src="./miscMedia/swordSound.mp3" preload="auto"></audio><img id="dragon" src="./miscMedia/dragon-37(1).png"></button>
         </div>
         <div id="portrait"></div>
-        <div id="shop" class="textCol"><h1 class="textMarg">Shop</h1></div>
+        <div id="shop" class="textCol">
+            <h1 class="textMarg">Shop</h1>
+            <div class="flex">
+                <button title="Cost: 10XP"class="storeButt">Wooden Club (+1XP/s)</button>
+                <button class="storeButt" title="Cost: 50XP">Dagger (+10XP/s)</button>
+                <button class="storeButt" title="Cost: 100XP">Greatsword(+5XP/click)</button>
+                <button class="storeButt" title="Cost: 1000XP">Enchanted Spear(+50XP/s)</button>
+                <button class="storeButt" title="Cost: 1250XP">Shovel of Bonk-ing(+25XP/click)</button>
+                <button class="storeButt" title="Cost: 10,000XP">Carsomyr, Sword of Dragonslaying(+250XP/s)</button>
+                <button class="storeButt" title="Cost: 100,000XP">Beretta ARX160 Assault Rifle with Mounted Grenade Launcher (x2XP/s)</button>
+            </div>
+        </div>
         <div id="stats" class="textCol">
             <h1 class="textMarg">Stats/Attributes</h1>
-            <p class="textMarg">Current XP: <span id="countXP"></span></p>
+            <p class="textMarg" id="xpCountStr">Current XP: <span id="countXP"></span></p>
             <p class="textMarg" id="namePlate" ></p>
             <p class="textMarg" id="racePlate" ></p>
         </div>
