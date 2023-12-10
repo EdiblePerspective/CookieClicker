@@ -64,7 +64,7 @@ function getXP(){
 }
 getXP();
 const swordSound=document.getElementById('swordSound')
-function playSwordSound(){
+function playSwordSound(){ //play sound on dragon click with no delay
     if (swordSound.currentTime!=0){
         swordSound.currentTime=0
     };
@@ -96,7 +96,9 @@ const totalDaggers=document.getElementById("totalDaggers");
 const totalAxes=document.getElementById("totalAxes");
 const totalSpears=document.getElementById("totalSpears");
 const totalRifles=document.getElementById("totalRifles");
-document.getElementById("buyClub").onclick = function (){
+const buyClubHTML=document.getElementById("buyClub")
+const totalSwords=document.getElementById("totalSwords")
+function buyClub(){
     if (XP>=10){
         XP=XP-10;
         xpPerSec=xpPerSec+1;
@@ -115,8 +117,10 @@ document.getElementById("buyClub").onclick = function (){
                 }, 
         1000);
     }
-} 
-document.getElementById("buyDagger").onclick = function (){
+}
+buyClubHTML.addEventListener("click",buyClub);
+const buyDaggerHTML= document.getElementById("buyDagger");
+function buyDagger(){
     if (XP>=50){
         XP=XP-50;
         xpPerSec=xpPerSec+10;
@@ -135,10 +139,30 @@ document.getElementById("buyDagger").onclick = function (){
         1000);
     }
 }
-document.getElementById("buyAxe").onclick = function (){
-
+buyDaggerHTML.addEventListener("click",buyDagger);
+const buyAxeHTML= document.getElementById("buyAxe");
+function buyAxe(){
+    if(XP>=100){
+        XP=XP-100;
+        upgrades.Axes=upgrades.Axes+1
+        totalAxes.textContent=upgrades.Axes;
+        totalUpgrades=totalUpgrades+1;
+        totalUpgradesHTML.textContent=totalUpgrades;
+        for(let i = 0; i < upgrades.Axes; i++){
+            dragon.addEventListener('click',addXPAxe);}
+    }
 }
-document.getElementById("buySpear").onclick = function (){
+
+function addXPAxe(){
+    XP = XP + 50;
+    console.log("+50XP", XP);
+    countXP.textContent=XP;
+    localStorage.setItem("XP",JSON.stringify(XP)); //store XP as string
+}
+
+buyAxeHTML.addEventListener("click",buyAxe);
+const buySpearHTML= document.getElementById("buySpear");
+function buySpear(){
     if (XP>=1000){
         XP=XP-1000;
         xpPerSec=xpPerSec+250;
@@ -157,10 +181,29 @@ document.getElementById("buySpear").onclick = function (){
         1000);
     }
 }
-document.getElementById("buyShovel").onclick = function (){
-
+buySpearHTML.addEventListener("click",buySpear);
+const buyShovelHTML= document.getElementById("buyShovel");
+function buyShovel(){
+    if(XP>=1250){
+        XP=XP-1250;
+        upgrades.Shovels=upgrades.Shovels+1
+        totalShovels.textContent=upgrades.Shovels;
+        totalUpgrades=totalUpgrades+1;
+        totalUpgradesHTML.textContent=totalUpgrades;
+        for(let i = 0; i < upgrades.Shovels; i++){
+            dragon.addEventListener('click',addXPShovel);}
+    }
+}      
+function addXPShovel(){
+XP = XP + 250;
+console.log("+250XP", XP);
+countXP.textContent=XP;
+localStorage.setItem("XP",JSON.stringify(XP)); //store XP as string
 }
-document.getElementById("buySword").onclick = function (){
+
+buyShovelHTML.addEventListener("click",buyShovel);
+const buySwordHTML= document.getElementById("buySword");
+function buySword(){
     if (XP>=10000){
         XP=XP-10000;
         xpPerSec=xpPerSec+1000;
@@ -179,10 +222,96 @@ document.getElementById("buySword").onclick = function (){
         1000);
     }
 }
-document.getElementById("buyRifle").onclick = function (){
-
-}   
-
+buySwordHTML.addEventListener("click",buySword); // the rifle upgrade often breaks, theres something wrong with the buy rifle function on the next line but I cant figure out what
+document.getElementById("buyRifle").onclick = function (){//multiply XP per second amount by 2, using 'for' loops
+    console.log("test test")
+    if (XP>=500000){
+        if (upgrades.Rifles==0){
+            XP=XP-500000;
+            upgrades.Rifles=upgrades.Rifles+1;
+            totalRifles.textContent=upgrades.Rifles;
+            function rifleMultiply(){
+                let tempClubs=upgrades.Clubs;
+                let tempDaggers=upgrades.Daggers;
+                let tempSpears=upgrades.Spears;
+                let tempSwords=upgrades.Swords;
+                for(let i = 0; i < tempClubs; i++){
+                    buyClub()
+                }
+                let tempClubsB=upgrades.Clubs;
+                sessionStorage.setItem("tempClubsB",JSON.stringify(tempClubsB)); //store value for current session
+                upgrades.Clubs=upgrades.Clubs-tempClubs;
+                for(let i = 0; i < tempDaggers; i++){
+                    buyDagger()
+                }
+                let tempDaggersB=upgrades.Daggers;
+                sessionStorage.setItem("tempDaggersB",JSON.stringify(tempDaggersB));
+                upgrades.Daggers=upgrades.Daggers-tempDaggers;
+                for(let i = 0; i < tempSpears; i++){
+                    buySpear()
+                }
+                let tempSpearsB=upgrades.Spears;
+                sessionStorage.setItem("tempSpearsB",JSON.stringify(tempSpearsB));
+                upgrades.Spears=upgrades.Spears-tempSpears;
+                for(let i = 0; i < tempSwords; i++){
+                    buySword()
+                }
+                let tempSwordsB=upgrades.Swords;
+                sessionStorage.setItem("tempSwordsB",JSON.stringify(tempSwordsB));
+                upgrades.Swords=upgrades.Swords-tempSwords;
+                totalClubs.textContent=upgrades.Clubs;
+                totalDaggers.textContent=upgrades.Daggers;
+                totalSpears.textContent=upgrades.Spears;
+                totalSwords.textContent=upgrades.Swords;
+                let minusTotalUpgrades=tempClubs+tempDaggers+tempSpears+tempSwords;
+                totalUpgrades=totalUpgrades-minusTotalUpgrades;
+                totalUpgrades=totalUpgrades+1;
+                totalUpgradesHTML.textContent=totalUpgrades;
+            }
+            rifleMultiply();
+        }
+        if (upgrades.Rifles>=1){ // this part was originally super (unnessecarily) complicated before I re-did it
+            let tempClubsBStore = JSON.parse(sessionStorage.getItem("tempClubsB"));
+            let tempDaggersBStore = JSON.parse(sessionStorage.getItem("tempDaggersB"));
+            let tempSpearsBStore = JSON.parse(sessionStorage.getItem("tempSpearsB"));
+            let tempSwordsBStore = JSON.parse(sessionStorage.getItem("tempSwordsB"));
+            for(let i = 0; i < tempClubsBStore; i++){ 
+                buyClub()
+            }
+            for(let i = 0; i < tempDaggersBStore; i++){ 
+                buyDagger()
+            }
+            for(let i = 0; i < tempSpearsBStore; i++){ 
+                buySpear()
+            }
+            for(let i = 0; i < tempSwordsBStore; i++){ 
+                buySword()
+            }
+            tempClubsB=tempClubsBStore*2;
+            tempDaggersB=tempDaggersBStore*2;
+            tempSpearsB=tempSpearsBStore*2;
+            tempSwordsB=tempSwordsBStore*2;
+            sessionStorage.setItem("tempClubsB",JSON.stringify(tempClubsB));
+            sessionStorage.setItem("tempDaggersB",JSON.stringify(tempDaggersB));
+            sessionStorage.setItem("tempSpearsB",JSON.stringify(tempSpearsB));
+            sessionStorage.setItem("tempSwordsB",JSON.stringify(tempSwordsB));
+            upgrades.Clubs=upgrades.Clubs-tempClubsBStore;
+            upgrades.Daggers=upgrades.Daggers-tempDaggersBStore;
+            upgrades.Spears=upgrades.Spears-tempSpearsBStore;
+            upgrades.Swords=upgrades.Swords-tempSwordsBStore;
+            upgrades.Rifles=upgrades.Rifles+1;
+            totalRifles.textContent=upgrades.Rifles;
+            totalClubs.textContent=upgrades.Clubs;
+            totalDaggers.textContent=upgrades.Daggers;
+            totalSpears.textContent=upgrades.Spears;
+            totalSwords.textContent=upgrades.Swords;
+            let minusTotalUpgrades=tempClubsBStore+tempDaggersBStore+tempSpearsBStore+tempSwordsBStore;
+            totalUpgrades=totalUpgrades-minusTotalUpgrades;
+            totalUpgrades=totalUpgrades+1;
+            totalUpgradesHTML.textContent=totalUpgrades;
+        }
+    }
+}
 
 
 ////////////////ideas/////////////////////////////////////
@@ -195,6 +324,8 @@ document.getElementById("buyRifle").onclick = function (){
 // popup multi choice events at certain lvls, dialog boxes, ifelse statements
 
 //animate upgrade button text to flash whenever player has sufficient xp to purchase particular upgrade
+
+// upgrade that squares (also one that cubes?) the xp/s amount
 
 
 

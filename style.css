@@ -125,6 +125,7 @@ a, a:visited, a:active, a:link, a:hover {
 .textCol{
     color: goldenrod;
     text-shadow: black 2px 2px 2px;
+    position: sticky;
 }
 .textMarg{
     margin-left: 10px;
@@ -176,4 +177,20 @@ button[title]:hover::after {
     width: 10rem;
     font-size: x-large;
     height: 1rem;
+}
+
+.formA{
+    width: 15rem;
+    height: 5rem;
+    font-size: xx-large;
+    margin-top: 15rem;
+    margin-bottom: 1rem;
+}
+#name,#race, #submitInfo{
+    background: black ;
+    color: goldenrod;
+    font-family:'Times New Roman', Times, serif;
+    text-align: center;
+    border: double grey 3px;
+    margin-right: 1rem;
 }
