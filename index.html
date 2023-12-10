@@ -41,20 +41,29 @@
         <div id="shop" class="textCol">
             <h1 class="textMarg">Shop</h1>
             <div class="flex">
-                <button title="Cost: 10XP"class="storeButt">Wooden Club (+1XP/s)</button>
-                <button class="storeButt" title="Cost: 50XP">Dagger (+10XP/s)</button>
-                <button class="storeButt" title="Cost: 100XP">Greatsword(+5XP/click)</button>
-                <button class="storeButt" title="Cost: 1000XP">Enchanted Spear(+50XP/s)</button>
-                <button class="storeButt" title="Cost: 1250XP">Shovel of Bonk-ing(+25XP/click)</button>
-                <button class="storeButt" title="Cost: 10,000XP">Carsomyr, Sword of Dragonslaying(+250XP/s)</button>
-                <button class="storeButt" title="Cost: 100,000XP">Beretta ARX160 Assault Rifle with Mounted Grenade Launcher (x2XP/s)</button>
+                <button id="buyClub" title="Cost: 10XP"class="storeButt">Wooden Club (+1XP/s)</button>
+                <button id="buyDagger" class="storeButt" title="Cost: 50XP">Dagger (+10XP/s)</button>
+                <button id="buyAxe" class="storeButt" title="Cost: 100XP">Greataxe (+50XP/click)</button>
+                <button id="buySpear" class="storeButt" title="Cost: 1000XP">Enchanted Spear(+250XP/s)</button>
+                <button id="buyShovel" class="storeButt" title="Cost: 1250XP">Shovel of Bonk-ing(+250XP/click)</button>
+                <button id="buySword" class="storeButt" title="Cost: 10,000XP">Carsomyr, Sword of Dragonslaying(+1000XP/s)</button>
+                <button id="buyRifle" class="storeButt" title="Cost: 100,000XP">Beretta ARX160 Assault Rifle with Mounted Grenade Launcher (x2XP/s)</button>
             </div>
         </div>
         <div id="stats" class="textCol">
-            <h1 class="textMarg">Stats/Attributes</h1>
-            <p class="textMarg" id="xpCountStr">Current XP: <span id="countXP"></span></p>
+            <h1 class="textMarg" id="bigTitle">Stats/Attributes</h1>
             <p class="textMarg" id="namePlate" ></p>
             <p class="textMarg" id="racePlate" ></p>
+            <p class="textMarg" id="xpCountStr">Current XP: <span id="countXP"></span></p>
+            <p class="textMarg">XP/s: <span id="xpPerSec"></span></p>
+            <p class="textMarg">Upgrades Purchased: <span id="totalUpgrades"></span></p>
+            <p class="textMarg">Clubs: <span id="totalClubs"></span></p>
+            <p class="textMarg">Daggers: <span id="totalDaggers"></span></p>
+            <p class="textMarg">Axes: <span id="totalAxes"></span></p>
+            <p class="textMarg">Spears: <span id="totalSpears"></span></p>
+            <p class="textMarg">Shovels: <span id="totalShovels"></span></p>
+            <p class="textMarg">Swords: <span id="totalSwords"></span></p>
+            <p class="textMarg">Rifles: <span id="totalRifles"></span></p>
         </div>
     </div>
 </div> 

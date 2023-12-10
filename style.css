@@ -33,6 +33,10 @@ body{background:darkgray;
 #stats{
     background: rgb(00,00,00,00.85);
     border: black solid 2px;
+    font-size: smaller;
+    display: flex;
+    flex-flow: row wrap;
+    font-weight: 700;
 }
 #portrait{
     background: rgb(00,00,00,0);
@@ -152,7 +156,7 @@ a, a:visited, a:active, a:link, a:hover {
     border: goldenrod solid;
     background: rgb(00,00,00,00.75);
     color: goldenrod;
-    border-radius: 15%;
+    border-radius: 5%;
 }
 .storeButt:hover{
     box-shadow: goldenrod 3px 3px 3px 3px 3px;
@@ -167,4 +171,9 @@ button[title]:hover::after {
     margin-top: 1rem;
     border-radius: 5px;
     font-weight: 700;
+}
+#bigTitle{
+    width: 10rem;
+    font-size: x-large;
+    height: 1rem;
 }

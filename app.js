@@ -70,9 +70,118 @@ function playSwordSound(){
     };
     swordSound.play();
 }
-//setInterval(function () {
-  //  XP = XP + 1;
-    //console.log("+1XP", XP);}, 1000);
+const upgrades={
+    Clubs:0,
+    Daggers:0,
+    Axes:0,
+    Spears:0,
+    Shovels:0,
+    Swords:0,
+    Rifles:0,
+    getTotalUpgrades: function(){
+        return this.Clubs+this.Daggers+this.Axes+this.Spears+this.Shovels+this.Swords+this.Rifles;
+    },
+}
+const totalUpgradesHTML=document.getElementById('totalUpgrades')
+//let totalUpgrades=upgrades.getTotalUpgrades();
+//function numberOfUpgrades(){                                      //couldn't get this to work so used alternative method
+    //console.log(totalUpgrades); //print total number of upgrades
+    //totalUpgradesHTML.textContent=totalUpgrades;
+//}
+let totalUpgrades=0;
+let xpPerSec=0;
+const xpPerSecHTML=document.getElementById("xpPerSec");
+const totalClubs=document.getElementById("totalClubs");
+const totalDaggers=document.getElementById("totalDaggers");
+const totalAxes=document.getElementById("totalAxes");
+const totalSpears=document.getElementById("totalSpears");
+const totalRifles=document.getElementById("totalRifles");
+document.getElementById("buyClub").onclick = function (){
+    if (XP>=10){
+        XP=XP-10;
+        xpPerSec=xpPerSec+1;
+        xpPerSecHTML.textContent=xpPerSec;
+        upgrades.Clubs=upgrades.Clubs+1;
+        totalClubs.textContent=upgrades.Clubs;
+        //numberOfUpgrades();
+        totalUpgrades=totalUpgrades+1;
+        totalUpgradesHTML.textContent=totalUpgrades;
+        setInterval(function () {
+            XP = XP + 1;
+            console.log("+1XP", XP);
+            countXP.textContent=XP;
+            localStorage.setItem("XP",JSON.stringify(XP));
+            getXP();
+                }, 
+        1000);
+    }
+} 
+document.getElementById("buyDagger").onclick = function (){
+    if (XP>=50){
+        XP=XP-50;
+        xpPerSec=xpPerSec+10;
+        xpPerSecHTML.textContent=xpPerSec;
+        upgrades.Daggers=upgrades.Daggers+1;
+        totalDaggers.textContent=upgrades.Daggers;
+        totalUpgrades=totalUpgrades+1;
+        totalUpgradesHTML.textContent=totalUpgrades;
+        setInterval(function () {
+            XP = XP + 10;
+            console.log("+10XP", XP);
+            countXP.textContent=XP;
+            localStorage.setItem("XP",JSON.stringify(XP));
+            getXP();
+                }, 
+        1000);
+    }
+}
+document.getElementById("buyAxe").onclick = function (){
+
+}
+document.getElementById("buySpear").onclick = function (){
+    if (XP>=1000){
+        XP=XP-1000;
+        xpPerSec=xpPerSec+250;
+        xpPerSecHTML.textContent=xpPerSec;
+        upgrades.Spears=upgrades.Spears+1;
+        totalSpears.textContent=upgrades.Spears;
+        totalUpgrades=totalUpgrades+1;
+        totalUpgradesHTML.textContent=totalUpgrades;
+        setInterval(function () {
+            XP = XP + 250;
+            console.log("+250XP", XP);
+            countXP.textContent=XP;
+            localStorage.setItem("XP",JSON.stringify(XP));
+            getXP();
+                }, 
+        1000);
+    }
+}
+document.getElementById("buyShovel").onclick = function (){
+
+}
+document.getElementById("buySword").onclick = function (){
+    if (XP>=10000){
+        XP=XP-10000;
+        xpPerSec=xpPerSec+1000;
+        xpPerSecHTML.textContent=xpPerSec;
+        upgrades.Swords=upgrades.Swords+1;
+        totalSwords.textContent=upgrades.Swords;
+        totalUpgrades=totalUpgrades+1;
+        totalUpgradesHTML.textContent=totalUpgrades;
+        setInterval(function () {
+            XP = XP + 1000;
+            console.log("+1000XP", XP);
+            countXP.textContent=XP;
+            localStorage.setItem("XP",JSON.stringify(XP));
+            getXP();
+                }, 
+        1000);
+    }
+}
+document.getElementById("buyRifle").onclick = function (){
+
+}   
 
 
 
